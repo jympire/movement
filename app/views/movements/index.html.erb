@@ -1,33 +1,36 @@
-<p id="notice"><%= notice %></p>
+<div class="container content">
+  <h3><strong>Movements</strong></h3>
+    
+    <br>
 
-<h1>Movements</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Text</th>
+          <th>Description</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Text</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <tbody>
+        <% @movements.each do |movement| %>
+          <tr>
+            <td><%= movement.user_id %></td>
+            <td><%= movement.text %></td>
+            <td><%= movement.description %></td>
+            <td><%= link_to 'Show', movement if policy(movement).show? %></td>
+            <td><%= link_to 'Edit', edit_movement_path(movement) if policy(movement).edit? %></td>
+            <td><%= link_to 'Destroy', movement, method: :delete, data: { confirm: 'Are you sure?' } if policy(movement).destroy? %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-  <tbody>
-    <% @movements.each do |movement| %>
-      <tr>
-        <td><%= movement.user_id %></td>
-        <td><%= movement.text %></td>
-        <td><%= movement.description %></td>
-        <td><%= link_to 'Show', movement if policy(movement).show? %></td>
-        <td><%= link_to 'Edit', edit_movement_path(movement) if policy(movement).edit? %></td>
-        <td><%= link_to 'Destroy', movement, method: :delete, data: { confirm: 'Are you sure?' } if policy(movement).destroy? %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <br>
 
-<br>
+    <% if policy(Movement).new? %>
+      <%= link_to 'New Movement', new_movement_path %>
+    <% end %>  
+</div>
 
-<% if policy(Movement).new? %>
-  <%= link_to 'New Movement', new_movement_path %>
-<% end %>

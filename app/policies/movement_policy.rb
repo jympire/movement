@@ -9,10 +9,14 @@ class MovementPolicy < ApplicationPolicy
   
   def update?
     return true if user.present? && user.admin?
+
+    user.present? && user == post.user
   end
   
   def destroy?
-    user.present? && user.admin?
+    return true if user.present? && user.admin?
+
+    user.present? && user == post.user
   end
   
   private
