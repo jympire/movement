@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @movement.user_id %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @movement.text %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @movement.description %>
+</p>
+
+<% if policy(Movement).new? %>
+  <%= link_to 'Edit', edit_movement_path(@movement) %> |
+  <%= link_to 'Back', movements_path %>
+<% end %>
