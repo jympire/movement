@@ -1,4 +1,9 @@
-<div class="container content">
+<div class="embed-responsive embed-responsive-16by9">
+  <center class="video">
+    <iframe class="embed-responsive-item" src='https://player.vimeo.com/video/<%= @movement.vimeo %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe> 
+  </center>  
+</div>
+ <div class="container content">
   <h3><strong><%= @movement.text %></strong></h3>
   <p><%= @movement.description %></p>
   <br>
