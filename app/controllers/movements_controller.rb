@@ -4,7 +4,7 @@ class MovementsController < ApplicationController
   # GET /movements
   # GET /movements.json
   def index
-    @movements = Movement.all
+    @movements = Movement.all.order("created_at DESC")
     authorize @movements
   end
 
@@ -73,6 +73,6 @@ class MovementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movement_params
-      params.require(:movement).permit(:user_id, :text, :description)
+      params.require(:movement).permit(:user_id, :text, :description, equipments_attributes: [:id, :name, :_destroy], directions_attributes: [:id, :step, :_destroy])
     end
 end

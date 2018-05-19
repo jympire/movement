@@ -1,4 +1,4 @@
-<%= form_for(movement) do |f| %>
+<%= simple_form_for(movement) do |f| %>
   <% if movement.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(movement.errors.count, "error") %> prohibited this movement from being saved:</h2>
@@ -10,23 +10,48 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="field">
     <%= f.label :user_id %>
     <%= f.number_field :user_id %>
   </div>
-
-  <div class="field">
-    <%= f.label :text %>
-    <%= f.text_field :text %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-
+  <%= f.input :text, placeholder: "What is the name of this exercise?", input_html: { class: "form-control" } %>
+  <br>
+  <%= f.input :description, placeholder: "Describe this exercise.", input_html: { class: 'form-control' } %>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Equipment</h4>
+      <div id="equipment">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= f.simple_fields_for :equipments do |equipment| %>
+              <%= render 'equipment_fields', f: equipment %>
+            <% end %>
+            <div class="links">
+              <%= link_to_add_association 'Add Equipment', f, :equipments, class: "btn btn-default add-button" %>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Directions</h4>
+      <div id="directions">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= f.simple_fields_for :directions do |direction| %>
+              <%= render 'direction_fields', f: direction %>
+            <% end %>
+            <div class="links">
+              <%= link_to_add_association 'Add Step', f, :directions, class: "btn btn-default add-button" %>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div> 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button :submit, class: "btn btn-save" %>
   </div>
 <% end %>

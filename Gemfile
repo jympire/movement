@@ -18,6 +18,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'pundit', '~> 1.1'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'simple_form', '~> 4.0', '>= 4.0.1'
+gem 'cocoon', '~> 1.2', '>= 1.2.11'
 
 group :development, :test do
   gem 'byebug', platform: :mri

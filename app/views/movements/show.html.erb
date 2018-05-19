@@ -1,18 +1,42 @@
 <div class="container content">
-  <p>
-  <strong>User:</strong>
-    <%= @movement.user_id %>
-  </p>
-
-  <p>
-    <strong>Text:</strong>
-    <%= @movement.text %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= @movement.description %>
-  </p>
+  <h3><strong><%= @movement.text %></strong></h3>
+  <p><%= @movement.description %></p>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <div id="equipments">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h4><strong>Equipment</strong></h4>
+            <ul>
+              <% @movement.equipments.each do |equipment| %>
+                <li>
+                  <%= equipment.name %>
+                </li>
+              <% end %>
+            </ul>  
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div id="directions">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h4>Directions</h4>
+            <ul>
+              <% @movement.directions.each do |direction| %>
+                <li>
+                  <%= direction.step %>
+                </li>
+              <% end %>
+            </ul>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <% if policy(Movement).new? %>
     <%= link_to 'Edit', edit_movement_path(@movement) %> |

@@ -1,3 +1,21 @@
 <div class="container content">
-  <h3><strong>Home</strong></h3>
+  <h2><strong>Movements</strong></h2>
+    
+    <br>
+
+    <% @movement.each do |movement| %>
+      <%= link_to movement do %>
+        <hr>
+        <div class="movement">
+          <span class="pull-left"> </span><span class="title"><h3><strong><%= movement.text %></strong></h3></span> 
+          <p><%= movement.description %></p>
+        </div>
+      <% end %>
+    <% end %>
+    <br><br>
+    <center>
+      <%= link_to "See More Movements", movements_path, class: "underline" %>&nbsp;<span class="caret"></span>  
+    </center>
+
+    <br> 
 </div>

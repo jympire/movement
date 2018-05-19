@@ -1,5 +1,8 @@
-<h1>New Movement</h1>
+<div class="container content">
+  <h3><strong>New Movement</strong></h3>
+  <br>
+  <%= render 'form', movement: @movement %>
+  <br>
+  <%= link_to 'Back', movements_path %>  
+</div>
 
-<%= render 'form', movement: @movement %>
-
-<%= link_to 'Back', movements_path %>

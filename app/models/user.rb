@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true, length: {maximum: 25}
   validates :last_name, presence: true, length: {maximum: 25}
   
-  has_many :posts
+  has_many :movements
   
   def admin?
     role == "admin"
