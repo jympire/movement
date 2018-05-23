@@ -1,4 +1,7 @@
 class Movement < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :text, use: :slugged
+  
   belongs_to :user
   
   has_many :equipments

@@ -23,6 +23,7 @@ gem 'cocoon', '~> 1.2', '>= 1.2.11'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'stripe', '~> 3.15'
 gem 'stripe_event', '~> 2.1', '>= 2.1.1'
+gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 
 group :development, :test do
   gem 'byebug', platform: :mri
