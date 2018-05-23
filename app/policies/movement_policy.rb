@@ -15,8 +15,6 @@ class MovementPolicy < ApplicationPolicy
   
   def destroy?
     return true if user.present? && user.admin?
-
-    user.present? && user == movement.user
   end
   
   private

@@ -1,9 +1,9 @@
 $white:                           #ffffff;
 $black:                           #000000;
-$dark:                            #484848;
+$dark:                            #28384d;
 $medium:                          #767676;
 $light:                           #9a9da4;
-$primary:                         #6a67ce;
+$primary:                         #ad97ef;
 $secondary:                       #1aafd0;
 $tertiary:                        #ffb900;
 $quaternary:                      #fc636b;
@@ -16,7 +16,8 @@ body {
   font-family: "proxima-nova",sans-serif;
   color: $dark;
   letter-spacing: 0.5px;
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 16px;
 }
 
 li a {
@@ -69,7 +70,7 @@ p {
 .no-bullet {
   li {
     list-style: none !important;
-    text-decoration: none !important
+    text-decoration: none !important;
   }
 }
 
@@ -93,6 +94,14 @@ hr {
 }
 
 .video {
+}
+
+.price-display {
+  text-align: center;
+}
+
+.price {
+  font-size: 48px;
 }
 
 
@@ -203,6 +212,32 @@ hr {
   transition: all .3s ease-out;
     &:hover {
     transform: scale(1.025);
+  }
+}
+
+.btn.btn-subscribe {
+  background-color: $primary !important;
+  color: $white;
+  border: 3px solid $primary;
+  padding: 10px 40px 10px 40px;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+}
+
+.btn.btn-subscribe:hover {
+  background-color: $primary !important;
+  color: $white;
+  border: 3px solid $primary;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-transition: all .3s ease-out;
+  -moz-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+    &:hover {
+    transform: scale(1.095);
   }
 }
 
@@ -337,6 +372,14 @@ input[type="checkbox"]:checked:before {
 }
 
 .navbar .navbar-nav li a {
+  color: $medium;
+  font-size: 14px;
+  font-weight: 400;
+  vertical-align: middle !important;
+}
+
+.navbar .navbar-nav li a:hover {
+  color: $primary;
   font-weight: 400;
   vertical-align: middle !important;
 }
@@ -359,7 +402,7 @@ input[type="checkbox"]:checked:before {
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: $black;
+  background-color: $dark;
   margin-top: 5px;
   margin-bottom: 5px;
 }

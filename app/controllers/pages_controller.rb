@@ -14,4 +14,7 @@ class PagesController < ApplicationController
 
   def support
   end
+  
+  def pricing
+  end
 end

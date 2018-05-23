@@ -1,12 +1,20 @@
+<% if user_signed_in? && current_user.subscribed? %>
+
+<br><br><br>
+<div class="container center">
+  <center><h1><%= @movement.text %></h1></center>
+  <br>
+  <center><p><%= @movement.description %></p></center>  
+</div>
+<br><br><br>
 <div class="embed-responsive embed-responsive-16by9">
   <center class="video">
-    <iframe class="embed-responsive-item" src='https://player.vimeo.com/video/<%= @movement.vimeo %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe> 
+    <iframe class="embed-responsive-item" src='https://player.vimeo.com/video/<%= @movement.vimeo_secret %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe> 
   </center>  
 </div>
- <div class="container content">
-  <h3><strong><%= @movement.text %></strong></h3>
-  <p><%= @movement.description %></p>
-  <br>
+<br><br><br>
+
+ <div class="container">
   <div class="row">
     <div class="col-md-6">
       <div id="equipments">
@@ -29,7 +37,7 @@
       <div id="directions">
         <div class="panel panel-default">
           <div class="panel-body">
-            <h4>Directions</h4>
+            <h4><strong>Directions</strong></h4>
             <ul>
               <% @movement.directions.each do |direction| %>
                 <li>
@@ -42,10 +50,71 @@
       </div>
     </div>
   </div>
+</div>
 
+<div class="container">
   <% if policy(Movement).new? %>
     <%= link_to 'Edit', edit_movement_path(@movement) %> |
-    <%= link_to 'Back', movements_path %>
+    <%= link_to 'Back', movements_path %> |
+  <% end %> 
+  <% if policy(Movement).destroy? %>
+    <%= link_to 'Destroy', @movement, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>  
 </div>
 
+<% else %>
+
+  <br><br><br>
+  <div class="container center">
+    <center><h1><%= @movement.text %></h1></center>
+    <br>
+    <center><p><%= @movement.description %></p></center>  
+  </div>
+  <br><br><br>
+  <div class="embed-responsive embed-responsive-16by9">
+    <center class="video">
+      <iframe class="embed-responsive-item" src='https://player.vimeo.com/video/<%= @movement.vimeo %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe> 
+    </center>  
+  </div>
+  <br><br>
+
+  <div class="container">
+    <center>
+      <%= link_to "Subscribe Now", pricing_path, class: "btn btn-subscribe" %>
+    </center>
+    <br>
+    <center><p class="small">Unlimited access. Cancel anytime.</p></center>
+  </div>
+  <br>
+   <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div id="equipments">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h4><strong>Equipment</strong></h4>
+              <ul>
+                <% @movement.equipments.each do |equipment| %>
+                  <li>
+                    <%= equipment.name %>
+                  </li>
+                <% end %>
+              </ul>  
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <% if policy(Movement).new? %>
+        <%= link_to 'Edit', edit_movement_path(@movement) %> |
+        <%= link_to 'Back', movements_path %> |
+      <% end %> 
+      <% if policy(Movement).destroy? %>
+        <%= link_to 'Destroy', @movement, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>  
+    </div>
+  </div>
+
+  <% end %>

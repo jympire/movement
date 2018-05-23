@@ -1,0 +1,28 @@
+<div class="container content">
+  <center><h2>Invest In Your Health</h2></center>
+  <br><br>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <center><h3>Monthly Plan</h3></center>
+          <br>  
+          <div class="price-display"><sup>$ </sup><span class="price">5</span><small> / mo</small></div>
+          <br>
+          <center class="text-muted">Billed monthly</center>
+          <br>
+          <% if user_signed_in? && current_user.subscribed? %>
+          <center><%= link_to "Your Plan", "#", class: "btn btn-normal btn-lg" %></center>
+          <% else %>
+            <center>
+              <%= link_to "Subscribe Now", new_subscription_path(plan: "monthly"), class: "btn btn-subscribe" %>
+            </center>
+          <% end %>
+          <br>
+        </div>  
+      </div> 
+    </div> 
+    <div class="col-md-4"></div>
+  </div>
+</div>

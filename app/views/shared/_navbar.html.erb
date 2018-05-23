@@ -17,8 +17,8 @@
     <div id="navbar" class="navbar-collapse collapse">
       <% if (!user_signed_in?) %>
       <ul class="nav navbar-nav navbar-right guest">
+        <li><%= link_to "Log In", new_user_session_path %></li>
         <li><%= link_to "Sign Up", new_user_registration_path %></li>
-        <li><%= link_to "Log In", new_user_session_path %></li>        
       </ul>
       <% end %>
       
@@ -33,11 +33,9 @@
           <ul class="dropdown-menu">
             <% if policy(Movement).new? %>
               <li><%= link_to 'New Movement', new_movement_path %></li>
-              <hr>
             <% end %>
             <li><%= link_to "Account Settings", edit_user_registration_path %>
             </li>
-            <hr>
             <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>

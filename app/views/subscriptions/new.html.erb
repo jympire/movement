@@ -1,0 +1,66 @@
+<div class="container content">
+  <center><h2>Invest In Your Health</h2></center>
+  <br><br>
+  
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="container">
+          <br>
+          
+          <% if current_user.card_last4? %>
+            <%= form_tag subscription_path, id: "existing-card" do %>
+              <p>Pay with existing card:</p>
+              <div><strong>Card on file:</strong> <%= current_user.card_brand %> (**** **** **** <%= current_user.card_last4 %>)</div>
+              <div><strong>Expiration:</strong> <%= current_user.card_exp_month %> / <%= current_user.card_exp_year %></div>
+              <br>
+              <p><small><%= link_to "or add a new card", "#", class: "show-card-form" %></small></p>
+              <%= hidden_field_tag :plan, params[:plan] %>
+
+              <input type="submit" class="btn btn-subscribe" value="Submit Payment">
+              <br>
+            <% end %>
+          <% end%> 
+
+          <% else %>
+          <%= form_tag subscription_path, id: "payment-form", style: (current_user.card_last4? ? "display:none" : nil) do %>
+            <span class="payment-errors"></span>
+
+            <div class="form-row">
+              <label>
+                <span>Card Number</span>
+                <input class="form-control" type="text" size="20" data-stripe="number" value="4242 4242 4242 4242">
+              </label>
+            </div>
+            
+            <br>
+                        
+            <div class="form-row">
+              <label>
+                <span>Expiration (MM/YY)</span>
+                <input class="form-control" type="text" size="2" data-stripe="exp_month" value="12">
+              </label>
+              <span> / </span>
+              <input class="form-control" type="text" size="2px" data-stripe="exp_year" value="20">
+            </div>
+            
+            <br>
+            
+            <div class="form-row">
+              <label>
+                <span>CVC</span>
+                <input class="form-control" type="text" size="4" data-stripe="cvc" value="123">
+              </label>
+            </div>
+            
+            <%= hidden_field_tag :plan, params[:plan] %>
+            <br>
+            
+            <input type="submit" class="submit btn btn-subscribe" value="Submit Payment">
+          <% end %>   
+          <br> 
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>

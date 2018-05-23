@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180519124516) do
+ActiveRecord::Schema.define(version: 20180523164923) do
+
+  create_table "charges", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "stripe_id"
+    t.integer  "amount"
+    t.string   "card_brand"
+    t.string   "card_last4"
+    t.string   "card_exp_month"
+    t.string   "card_exp_year"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["user_id"], name: "index_charges_on_user_id"
+  end
 
   create_table "directions", force: :cascade do |t|
     t.text     "step"
@@ -37,6 +50,7 @@ ActiveRecord::Schema.define(version: 20180519124516) do
     t.string   "youtube_id"
     t.string   "vimeo"
     t.string   "vimeo_secret"
+    t.string   "slug"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,6 +69,13 @@ ActiveRecord::Schema.define(version: 20180519124516) do
     t.datetime "updated_at",                          null: false
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "stripe_id"
+    t.string   "stripe_subscription_id"
+    t.string   "card_brand"
+    t.string   "card_last4"
+    t.string   "card_exp_month"
+    t.string   "card_exp_year"
+    t.datetime "expires_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
