@@ -9,7 +9,7 @@ $tertiary:                        #ffb900;
 $quaternary:                      #fc636b;
 $grey:                            #f5f5f5;
 $border:                          #dce0e0;
-$background:                      #f0f3f5;
+$background:                      #fafafa;
 $facebook:                        #3b5998;
 
 body {
@@ -87,7 +87,7 @@ hr {
   height: auto;
   min-height: 100px;
   &:hover {
-    background-color: $grey;
+    background-color: $background;
     border-radius: 5px;
     padding: 10px;
   }
